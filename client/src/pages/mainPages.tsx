@@ -11,11 +11,11 @@ const MainPage:React.FC = () =>{
     const dispatch = useAppDispatch()
     const {data,error,loading} = useTypedSelector(state=>state.data)
     const [tmpPage, setTmpPage] = useState('')
-    let dataVisible:dataType[] = data
+
+    
     useEffect(()=>{
         dispatch(fetchDataTable())
-        dataVisible = data
-        console.log(dataVisible)
+
     },[])
 
     if (loading){

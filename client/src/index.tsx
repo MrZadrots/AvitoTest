@@ -6,7 +6,7 @@ import MainPage from './pages/mainPages'
 import { Provider } from 'react-redux';
 import { store } from './store';
 import { Redirect, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import NewPage from './pages/newView';
+import NewPage from './pages/newPage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

@@ -9,9 +9,6 @@ export const newsReducer = (state = initialState, action:DataAction): DataState 
             return {loading:false, error:null, data: action.payload};
         case DataActionTypes.FETCH_DATA_ERROR:
             return {loading:false, error:action.payload, data: []};  
-        
-    
-
 
         default:
             return state

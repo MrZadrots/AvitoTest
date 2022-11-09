@@ -33,7 +33,14 @@ const NewView:React.FC<INewView> = ({dataNew,comments, isComments}) =>{
             </div>
             <div className="row">
                 <h3>Comments</h3>
-                {isComments?<Comments comments={comments}/>:<p>Comments not found</p>}
+                {isComments
+                
+                ?<>
+                    <p>Count comments: {dataNew.descendants}</p>
+                    <Comments comments={comments}/>
+                </>
+                
+                :<p>Comments not found</p>}
             </div>
         </div>
 

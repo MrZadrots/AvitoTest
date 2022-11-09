@@ -1,12 +1,12 @@
 import React,{useEffect,useState, useCallback} from 'react';
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import NewView from '../component/NewView/newView';
 import { commentsType, dataType } from '../types/types';
 import { useAppDispatch } from '../hooks/useAppDispatch';
 import { fetchDataNew } from '../store/action-creators/newData';
 import axios from 'axios';
-
+import './index.css'
 
 const NewPage:React.FC = () =>{
     let {id} = useParams<{id:string}>()
@@ -37,7 +37,11 @@ const NewPage:React.FC = () =>{
     },[fetchData])
 
     
-
+    const clickHandler = useCallback(async ()=>{
+        const fetch = await axios.post("http://localhost:5000/api/getComments",{comments:id})
+        setComments(fetch.data)
+        console.log("Обновил")
+    },[])
     if (loading){
         return(<h1>Загрузка</h1>)
     }
@@ -47,7 +51,16 @@ const NewPage:React.FC = () =>{
 
 
     return(
-        <NewView dataNew={data} comments={comments} isComments={isCommetns}/>
+        <div className="container">
+            <div className="header">
+                <div className="row">
+                    <Link id="return"  to="/">Вернуться на главную</Link>
+                    <a id="refresh" onClick={clickHandler}>Обновить</a>
+                </div>
+            </div>
+            <NewView dataNew={data} comments={comments} isComments={isCommetns}/>
+        </div>
+        
     )
 
 

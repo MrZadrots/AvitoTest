@@ -10,7 +10,6 @@ import News from '../component/News/News';
 const MainPage:React.FC = () =>{
     const dispatch = useAppDispatch()
     const {data,error,loading} = useTypedSelector(state=>state.data)
-    const [tmpPage, setTmpPage] = useState('')
 
     
     useEffect(()=>{

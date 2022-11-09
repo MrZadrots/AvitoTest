@@ -2,12 +2,13 @@ import { configureStore } from '@reduxjs/toolkit'
 import {applyMiddleware, createStore} from 'redux'
 import thunk from 'redux-thunk'
 import { rootReducer } from './reducers'
-import { newsReducer } from './reducers/newsReducer'
+import { newsReducer,newReducer } from './reducers/newsReducer'
 
 
 export const store = configureStore({
     reducer:{
         data: newsReducer,
+        new: newReducer
     }
 })
 

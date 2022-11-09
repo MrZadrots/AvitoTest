@@ -4,7 +4,6 @@ import { useTypedSelector } from '../hooks/useTypedSelector';
 import NewView from '../component/NewView/newView';
 import { commentsType, dataType } from '../types/types';
 import { useAppDispatch } from '../hooks/useAppDispatch';
-import { fetchDataNew } from '../store/action-creators/newData';
 import axios from 'axios';
 import './index.css'
 
@@ -36,7 +35,7 @@ const NewPage:React.FC = () =>{
         setLoading(false)
     },[fetchData])
 
-    
+
     const clickHandler = useCallback(async ()=>{
         const fetch = await axios.post("http://localhost:5000/api/getComments",{comments:id})
         setComments(fetch.data)

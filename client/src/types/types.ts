@@ -31,9 +31,9 @@ export enum DataActionTypes{
     FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS',
     FETCH_DATA_ERROR = 'FETCH_DATA_ERROR',
 
-    FETCH_DATA_NEW = 'FETCH_DATA',
-    FETCH_DATA_SUCCESS_NEW = 'FETCH_DATA_SUCCESS',
-    FETCH_DATA_ERROR_NEW = 'FETCH_DATA_ERROR',
+    UPDATE_DATA = 'UPDATE_DATA',
+    UPDATE_DATA_SUCCESS = 'UPDATE_DATA_SUCCES',
+    UPDATE_DATA_ERROR = 'UPDATE_DATA_ERROR'
 
 }
 
@@ -63,7 +63,20 @@ interface FetchDataErrorAction{
     payload:string
 }  
 
-export type DataAction = FetchDataAction | FetchDataErrorAction | FetchDataSuccessAction
+interface UpdateDataAction{
+    type:DataActionTypes.UPDATE_DATA
+}
+interface UpdateDataSuccessAction{
+    type: DataActionTypes.UPDATE_DATA_SUCCESS,
+    payload:any[]
+}
+interface UpdateDataErrorAction{
+    type: DataActionTypes.UPDATE_DATA_ERROR,
+    payload:string
+}
+
+export type DataAction = FetchDataAction | FetchDataErrorAction | FetchDataSuccessAction 
+                        | UpdateDataAction |UpdateDataSuccessAction| UpdateDataErrorAction
 
 
 //export interface dataTypeList extends Array<dataType>{}
@@ -80,27 +93,6 @@ export const initialStateNew:DataStateNew = {
     loading: false,
     error:null
 }
-
-interface FetchDataActionNew{
-    type:DataActionTypes.FETCH_DATA_NEW,
-}
-interface FetchDataSuccessActionNew{
-    type:DataActionTypes.FETCH_DATA_SUCCESS_NEW,
-    payload: any[]
-}
-interface FetchDataErrorActionNew{
-    type:DataActionTypes.FETCH_DATA_ERROR_NEW,
-    payload:string
-}  
-
-export type DataActionNew = FetchDataActionNew | FetchDataSuccessActionNew | FetchDataErrorActionNew
-
-
-export interface dataTypeListNew extends Array<dataType>{}
-
-
-
-
 
 
 
